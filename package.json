@@ -1,0 +1,85 @@
+{
+  "name": "@dmytropaduchak/nestjs-log",
+  "homepage": "https://github.com/dmytropaduchak/nestjs-log#readme",
+  "version": "1.0.8",
+  "description": "A simple log decorator or (TypeScript) for Nest framework (node.js) unified approach for class and function logging.",
+  "author": "Dmytro Paduchak <dmytro.paduchak@gmail.com>",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "files": [
+    "dist/**/*",
+    "*.md"
+  ],
+  "scripts": {
+    "prepublish": "npm run build",
+    "build": "rm -rf dist && tsc",
+    "lint": "eslint \"src/**/*.ts\"",
+    "lint:fix": "prettier --write \"src/**/*.ts\" && eslint \"src/**/*.ts\"",
+    "test": "jest --coverage --verbose && coveralls < coverage/lcov.info",
+    "test:dev": "jest --watch"
+  },
+  "keywords": [
+    "nestjs",
+    "nestjs-log",
+    "nestjs-log-decorator",
+    "log",
+    "log-decorator",
+    "logger",
+    "logger-decorator",
+    "decorator"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "colors": "^1.4.0",
+    "geoip-country": "^4.0.110"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmytropaduchak/nestjs-log.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dmytropaduchak/nestjs-log/issues"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "^7.0.0 || ^8.0.0",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^6.0.0 || ^7.2.0"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "src",
+    "testRegex": ".spec.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node"
+  },
+  "devDependencies": {
+    "@nestjs/common": "^8.4.1",
+    "@nestjs/core": "^8.4.1",
+    "@nestjs/testing": "^8.4.1",
+    "@types/jest": "^27.4.1",
+    "@types/mocha": "^9.1.0",
+    "@types/sinon": "^10.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.15.0",
+    "@typescript-eslint/parser": "^5.15.0",
+    "coveralls": "^3.1.1",
+    "eslint": "^8.11.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "jest": "^27.5.1",
+    "prettier": "^2.6.0",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^7.5.5",
+    "sinon": "^13.0.1",
+    "ts-jest": "^27.1.3",
+    "typescript": "^4.6.2"
+  }
+}
