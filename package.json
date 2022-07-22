@@ -1,7 +1,7 @@
 {
   "name": "@dmytropaduchak/nestjs-log",
   "homepage": "https://github.com/dmytropaduchak/nestjs-log#readme",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A simple log decorator or (TypeScript) for Nest framework (node.js) unified approach for class and function logging.",
   "author": "Dmytro Paduchak <dmytro.paduchak@gmail.com>",
   "license": "MIT",
@@ -15,7 +15,8 @@
     "build": "rm -rf dist && tsc",
     "lint": "eslint \"src/**/*.ts\"",
     "lint:fix": "prettier --write \"src/**/*.ts\" && eslint \"src/**/*.ts\"",
-    "test": "jest --coverage --verbose && coveralls < coverage/lcov.info"
+    "test": "jest --coverage --verbose && coveralls < coverage/lcov.info",
+    "test:dev": "jest --watch"
   },
   "keywords": [
     "nestjs",

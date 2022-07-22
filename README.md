@@ -19,17 +19,21 @@ There are dozen ways to help us, [JUST DO IT](https://github.com/pinchukdiana/he
 [![NPM Version](https://badge.fury.io/js/nestjs-log.svg)](http://badge.fury.io/js/nestjs-log?type=dev)
 
 
-## Description
+# NestJS Log
 
 A simple log decorator or (TypeScript) for Nest framework (node.js) unified approach for class and function logging.
 
-## Installation
+## Installation 
 
-```bash
+You can install this package using NPM:
+
+```sh
 npm i --save @dmytropaduchak/nestjs-log
 ```
 
-## Quick Start
+## How use
+
+Example with simple implementation:
 
 ```typescript
 import { Log } from '@dmytropaduchak/nestjs-log';
@@ -37,8 +41,24 @@ import { Log } from '@dmytropaduchak/nestjs-log';
 class Service {
   @log() async test(): Promise<void> {}
 }
-
 ```
+
+Example with custom looger implementation:
+
+```typescript
+import { LoggerService } from '@nestjs/common';
+import { Log } from '@dmytropaduchak/nestjs-log';
+
+class CustomLogger extends LoggerService {}
+
+const logger = new CustomLogger();
+
+class Service {
+  @log({ logger }) async test(): Promise<void> {}
+}
+```
+
+Example with transform logging data implementation:
 
 ```typescript
 import { LoggerService } from '@nestjs/common';
@@ -48,10 +68,55 @@ class MyLogger extends LoggerService {}
 
 const logger = new MyLogger();
 
-class Service {
-  @log({ logger }) async test(): Promise<void> {}
-}
+const transform = (key, value) => [key, value];
 
+class Service {
+  @log({ logger, transform }) async test(): Promise<void> {}
+}
+```
+
+Example with override default  log options implementation:
+
+```typescript
+import { Log } from '@dmytropaduchak/nestjs-log';
+
+const timestamp = true;
+const prefix = 'Test';
+
+class Service {
+  @log({ prefix, timestamp }) async test(): Promise<void> {}
+}
+```
+
+## Unit testing
+
+For run unit tests, use:
+
+```
+npm run test
+```
+
+All unit test report you can find at `report/` folder.
+
+For run test at watch mode, use:
+
+```
+npm run test:dev
+```
+
+
+## Linting
+
+For check eslint rules, use:
+
+```
+npm run lint
+```
+
+For auto fix all eslint bugs, use:
+
+```
+npm run lint:fix
 ```
 
 ## License

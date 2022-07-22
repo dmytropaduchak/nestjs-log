@@ -1,8 +1,11 @@
 import { Logger, LoggerService } from '@nestjs/common';
 
+export type Transform = (data: any) => any;
+
 export interface Options {
   logger?: LoggerService;
   prefix?: string;
+  transform?: Transform;
   timestamp?: boolean;
 }
 
@@ -24,7 +27,7 @@ export const Log = (options = DEFAULT_OPTIONS) => {
       const currentTime = Date.now();
       logger.debug(
         `${options?.prefix} "${propertyName}" invoke -> ${JSON.stringify(
-          args,
+          options?.transform ? args : options?.transform(args),
         )}`,
       );
 
@@ -33,9 +36,10 @@ export const Log = (options = DEFAULT_OPTIONS) => {
       const executeTime = options?.timestamp
         ? `${Date.now() - currentTime}ms.`
         : '';
+
       logger.debug(
         `${options?.prefix} "${propertyName}" result -> ${JSON.stringify(
-          data,
+          options?.transform ? data : options?.transform(data),
         )}${executeTime}`,
       );
 
